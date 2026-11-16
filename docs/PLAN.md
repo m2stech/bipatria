@@ -59,17 +59,17 @@ Baseado em [PRD.md](./PRD.md) e [CLAUDE.md](../CLAUDE.md). Ordem: **setup → in
 **Branch:** `milestone/m01-design-system`
 **Objetivo:** identidade visual da Pátria aplicada e navegação funcional entre módulos, sem dados.
 
-- [ ] Tokens de tema: roxo `#5208A5`, fundo `#FFE4E2`, vermelhos `#C82727`/`#F20013`, laranja `#F87F07`, Verdana
-- [ ] Extrair e versionar os recursos visuais autorizados (logotipo, ícones, imagens de `.Report\StaticResources`)
-- [ ] Layout base: barra de navegação por ícones, cabeçalho e área de canvas
-- [ ] Contêiner de página com canvas 1920 × 800 e variante 1600 × 4700 com rolagem vertical (xray)
-- [ ] Rotas vazias por módulo e página (Aéreo, Terrestre, Operadora, Admin) conforme o inventário aprovado
-- [ ] Capa vermelha com logotipo **[DECISÃO]** texto "2025" a atualizar
-- [ ] Componentes de estado: carregando, erro, sem resultado, dados indisponíveis
-- [ ] Componentes base: cartão de indicador, container de visual, botão limpar filtros
-- [ ] Responsividade: menus e filtros adaptados ao celular, rolagem controlada de tabelas largas
-- [ ] Rotas de login/admin como placeholders (sem autenticação real)
-- [ ] Testes de componentes e captura visual de referência do shell
+- [x] Tokens de tema: roxo `#5208A5`, fundo `#FFE4E2`, vermelhos `#C82727`/`#F20013`, laranja `#F87F07`, Verdana
+- [x] Extrair e versionar os recursos visuais autorizados (logotipo, ícones, imagens de `.Report\StaticResources`) — copiados para `apps/web/public/brand`; originais intactos
+- [x] Layout base: barra de navegação por ícones, cabeçalho e área de canvas
+- [x] Contêiner de página com canvas 1920 × 800 e variante 1600 × 4700 com rolagem vertical (xray)
+- [x] Rotas vazias por módulo e página (Aéreo, Terrestre, Operadora, Admin) conforme o inventário aprovado — `Duplicata de Executivos` e páginas ocultas ficam sem rota até decisão
+- [x] Capa vermelha com logotipo **[DECISÃO]** texto "2025" a atualizar — premissa: usar a imagem original sem alteração até confirmação do cliente
+- [x] Componentes de estado: carregando, erro, sem resultado, dados indisponíveis
+- [x] Componentes base: cartão de indicador, container de visual, botão limpar filtros
+- [x] Responsividade: menus e filtros adaptados ao celular, rolagem controlada de tabelas largas
+- [x] Rotas de login/admin como placeholders (sem autenticação real)
+- [x] Testes de componentes e captura visual de referência do shell (anexo `shell-aereo-vendas.png` no relatório do Playwright)
 
 **Commit final:** `feat(ui): design system Pátria e shell de navegação por módulos`
 
