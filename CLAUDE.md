@@ -40,17 +40,19 @@ Fixar versões compatíveis ao iniciar. **Não adicionar** Prisma, Stripe, tRPC 
 
 Todas as dependências de `apps/web` estão fixadas (sem `^`/`~`) em `apps/web/package.json`. Ao atualizar, fixar a nova versão exata e rodar `lint`, `typecheck`, `test` e `build` antes de commitar.
 
-### Comandos (executar em `apps/web`)
+### Comandos (executar na raiz do repositório)
+
+A raiz é um workspace npm (`package.json` com `workspaces: ["apps/web"]`); os scripts abaixo delegam para `apps/web` via `-w web`. Instalar e rodar sempre a partir da raiz — não é mais necessário `cd apps/web`.
 
 ```bash
-npm install          # instalar dependências
+npm install          # instalar dependências (única instalação, raiz)
 npm run dev           # servidor de desenvolvimento
 npm run build         # build de produção
 npm run start         # servir o build de produção
 npm run lint          # ESLint
 npm run format        # Prettier (escreve)
 npm run format:check  # Prettier (somente verifica)
-npm run typecheck     # tsc --noEmit
+npm run typecheck     # next typegen && tsc --noEmit
 npm run test          # testes unitários/componentes (Vitest)
 npm run test:watch    # Vitest em modo watch
 npm run test:e2e      # Playwright (requer `npx playwright install chromium` na primeira vez)
