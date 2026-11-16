@@ -39,16 +39,16 @@ Baseado em [PRD.md](./PRD.md) e [CLAUDE.md](../CLAUDE.md). Ordem: **setup → in
 **Branch:** `milestone/m00-setup`
 **Objetivo:** base técnica reproduzível, com repositório, tooling e CI mínimos.
 
-- [ ] Inicializar Git (a pasta ainda não é repositório) com branch `main`
-- [ ] `.gitignore` excluindo originais do Power BI, `outputs/`, `work/`, `.env*`, `node_modules`, `.next`, dados e arquivos de carga
-- [ ] Criar `apps/web` com Next.js (App Router) + React + TypeScript strict; fixar versões
-- [ ] Configurar Tailwind CSS e shadcn/ui
-- [ ] ESLint, Prettier, `tsc --noEmit` e scripts `lint`, `typecheck`, `test`, `build`
-- [ ] Configurar framework de testes (unitário e componentes) e Playwright para E2E/visual
-- [ ] `.env.example` sem valores reais; validação de variáveis de ambiente
-- [ ] Pipeline de CI (lint, typecheck, test, build) no provedor Git escolhido
-- [ ] Criar esqueleto `supabase/` e `importer/` (somente README com propósito)
-- [ ] Atualizar `CLAUDE.md` com comandos reais e versões fixadas
+- [x] Inicializar Git (a pasta ainda não é repositório) com branch `main`
+- [x] `.gitignore` excluindo originais do Power BI, `outputs/`, `work/`, `.env*`, `node_modules`, `.next`, dados e arquivos de carga
+- [x] Criar `apps/web` com Next.js (App Router) + React + TypeScript strict; fixar versões
+- [x] Configurar Tailwind CSS e shadcn/ui
+- [x] ESLint, Prettier, `tsc --noEmit` e scripts `lint`, `typecheck`, `test`, `build`
+- [x] Configurar framework de testes (unitário e componentes) e Playwright para E2E/visual
+- [x] `.env.example` sem valores reais; validação de variáveis de ambiente
+- [x] Pipeline de CI (lint, typecheck, test, build) no provedor Git escolhido
+- [x] Criar esqueleto `supabase/` e `importer/` (somente README com propósito)
+- [x] Atualizar `CLAUDE.md` com comandos reais e versões fixadas
 
 **Commit final:** `chore: setup inicial do monorepo (Next.js, Tailwind, shadcn/ui, CI)`
 
