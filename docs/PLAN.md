@@ -80,13 +80,13 @@ Baseado em [PRD.md](./PRD.md) e [CLAUDE.md](../CLAUDE.md). Ordem: **setup → in
 **Branch:** `milestone/m02-chart-prototype`
 **Objetivo:** decidir a biblioteca de visuais com base em evidência, antes de construir as páginas.
 
-- [ ] Levantar dos inventários os tipos de visual e recursos necessários (barras, colunas, linhas, roscas, cartões, tabelas/matrizes, hierarquias, subtotais, ordenação)
-- [ ] Prototipar ao menos 2 candidatas para gráficos e 2 para matrizes/tabelas com hierarquia e subtotais
-- [ ] Comparar com referências renderizadas do Power BI (capturas) em páginas representativas
-- [ ] Avaliar desempenho com volume realista, acessibilidade e tamanho do bundle
-- [ ] Registrar a decisão (ADR) em `docs/adr/` com critérios, resultado e riscos
-- [ ] Implementar wrappers próprios de gráfico/matriz isolando a biblioteca escolhida
-- [ ] Testes dos wrappers (formato, nulos, divisão por zero, ordenação, subtotais)
+- [x] Levantar dos inventários os tipos de visual e recursos necessários (barras, colunas, linhas, roscas, cartões, tabelas/matrizes, hierarquias, subtotais, ordenação) — tabela completa por tipo/módulo em `docs/adr/0001-biblioteca-de-visuais.md`, extraída de `inventario_power_bi.json`
+- [x] Prototipar ao menos 2 candidatas para gráficos e 2 para matrizes/tabelas com hierarquia e subtotais — Recharts vs ECharts; TanStack Table vs Material React Table (AG Grid descartado antes por exigir licença Enterprise para pivot avançado — decisão do cliente)
+- [~] Comparar com referências renderizadas do Power BI (capturas) em páginas representativas — **[DECISÃO]** sem acesso ao Power BI Desktop/Service nesta sessão, a comparação usou o inventário estrutural (tipos/campos/agregações do `pivotTable`) como proxy, não captura pixel a pixel; conferência visual real fica pendente para o M4
+- [x] Avaliar desempenho com volume realista, acessibilidade e tamanho do bundle — maior chunk caiu de 2,4 MB (com as 4 libs) para 456 KB após a decisão; acessibilidade e limitações registradas no ADR
+- [x] Registrar a decisão (ADR) em `docs/adr/` com critérios, resultado e riscos — `docs/adr/0001-biblioteca-de-visuais.md`
+- [x] Implementar wrappers próprios de gráfico/matriz isolando a biblioteca escolhida — `apps/web/src/components/charts/` (Recharts) e `apps/web/src/components/matrix/` (TanStack Table); candidatas descartadas removidas do pacote
+- [x] Testes dos wrappers (formato, nulos, divisão por zero, ordenação, subtotais) — `aggregations.test.ts`, `tanstack-sales-matrix.test.tsx`, `charts.test.tsx`
 
 **Commit final:** `feat(charts): protótipo de fidelidade e ADR da biblioteca de visuais`
 
