@@ -1,0 +1,61 @@
+# Originais do Power BI (somente leitura, fora do repositório)
+/AEREO_PATRIA/
+/TERRESTRE_PATRIA/
+/OPERADORA PÁTRIA/
+*.pbix
+*.pbit
+*.pbip
+*.abf
+
+# Materiais de inspeção e saídas
+/outputs/
+/work/
+
+# Segredos
+.env
+.env.*
+!.env.example
+
+# Dependências e builds
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.vercel/
+.turbo/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Dados e arquivos de carga
+*.csv
+*.xlsx
+*.xls
+*.parquet
+data/
+importer/work/
+importer/runs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Sistema/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/mcp.json
