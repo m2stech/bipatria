@@ -97,14 +97,14 @@ Baseado em [PRD.md](./PRD.md) e [CLAUDE.md](../CLAUDE.md). Ordem: **setup → in
 **Branch:** `milestone/m03-mock-data-filters`
 **Objetivo:** contrato de dados tipado e filtros reutilizáveis que depois trocam mock por Supabase sem refazer a UI.
 
-- [ ] Definir tipos TypeScript dos domínios a partir dos modelos semânticos: `f_Vendas` (Aéreo/Terrestre), `f_Operadora`, `f_Grupos` e dimensões
-- [ ] Interface de repositório de dados (`DataSource`) com implementação mock; UI depende só da interface
-- [ ] Gerar fixtures sintéticas determinísticas (sem dados reais de clientes), incluindo casos de borda: nulos, zero, datas inconsistentes
-- [ ] Portar regras de cálculo para funções puras testadas: nulos, divisão por zero, contagem distinta, janelas de data, faixas ADVP
-- [ ] Registrar quais medidas DAX foram portadas e quais ficam pendentes; **não unificar fórmulas por nome** (`rentabilidade_003`/`tarifa_003` vs `Total`/`TotalRecebimento`)
-- [ ] Estado global de filtros (URL como fonte de verdade): emissão, agência, executivo/promotor, rede, mentoria, companhia, filial, nacional/internacional, origem/destino, sistema, produto, fornecedor, cabine
-- [ ] Filtro de calendário (somente filtro de dados) e "limpar filtros"
-- [ ] Testes unitários das regras e dos filtros
+- [x] Definir tipos TypeScript dos domínios a partir dos modelos semânticos: `f_Vendas` (Aéreo/Terrestre), `f_Operadora`, `f_Grupos` e dimensões — `apps/web/src/lib/domain/` (tipos de Aéreo e Terrestre mantidos independentes mesmo com nomes de coluna iguais, pois os papéis semânticos divergem — ver comentários no código)
+- [x] Interface de repositório de dados (`DataSource`) com implementação mock; UI depende só da interface — `apps/web/src/lib/data/data-source.ts` e `apps/web/src/lib/data/mock/mock-data-source.ts`
+- [x] Gerar fixtures sintéticas determinísticas (sem dados reais de clientes), incluindo casos de borda: nulos, zero, datas inconsistentes — `apps/web/src/lib/data/mock/fixtures-*.ts`, PRNG seedado (`prng.ts`)
+- [x] Portar regras de cálculo para funções puras testadas: nulos, divisão por zero, contagem distinta, janelas de data, faixas ADVP — `apps/web/src/lib/rules/`
+- [x] Registrar quais medidas DAX foram portadas e quais ficam pendentes; **não unificar fórmulas por nome** (`rentabilidade_003`/`tarifa_003` vs `Total`/`TotalRecebimento`) — `docs/paridade-dax.md`
+- [x] Estado global de filtros (URL como fonte de verdade): emissão, agência, executivo/promotor, rede, mentoria, companhia, filial, nacional/internacional, origem/destino, sistema, produto, fornecedor, cabine — `apps/web/src/lib/filters/` (useSearchParams/useRouter nativos do Next, sem nova dependência)
+- [ ] Filtro de calendário (componente visual) e "limpar filtros" — estado e botão (`ClearFiltersButton`, M1) já prontos; componente visual de calendário (shadcn `Calendar`/`Popover`) fica para o M4, junto das páginas que o usam
+- [x] Testes unitários das regras e dos filtros — 92 testes (Vitest)
 
 **Commit final:** `feat(data): contrato de dados, mocks determinísticos, regras portadas e filtros`
 
