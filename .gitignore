@@ -44,7 +44,7 @@ playwright/.cache/
 *.xlsx
 *.xls
 *.parquet
-data/
+/importer/data/
 importer/work/
 importer/runs/
 
