@@ -164,17 +164,46 @@ prerender — a página precisou envolver o componente em `<Suspense>` (ver
 problema. Isso não elimina TanStack Table, mas é um detalhe de integração a repetir em
 toda página real que usar a matriz.
 
-### Limitação: comparação com referência renderizada do Power BI
+### Comparação com referência renderizada do Power BI
 
-O CLAUDE.md exige comparar com "referências renderizadas do Power BI (capturas)", não
-só com o JSON do layout. Esta sessão não teve acesso ao Power BI Desktop/Service para
-abrir os relatórios e capturar telas reais — a comparação feita aqui usa o
-**inventário estrutural** (`inventario_power_bi.json`: tipos de visual, campos e
-agregações configuradas em cada `pivotTable`/gráfico) como proxy, não uma captura
-visual lado a lado. É uma limitação real, não um item concluído por completo:
-a conferência com captura renderizada de fato fica pendente e deve acontecer no M4
-(primeira página completa do Aéreo), quando houver acesso ao Power BI ou a capturas
-fornecidas pelo cliente para comparar pixel a pixel.
+O cliente forneceu capturas reais das páginas do Aéreo em `PRINTS_BI_AEREO/`
+(Vendas, Cias, Agências, Executivos, Metas, Share diário, Auditoria de dados, X-ray).
+Comparação contra os protótipos de `/dev/chart-prototype`:
+
+- **Matriz (`pivotTable`)**: a referência usa `⊞`/`⊟` para expandir/colapsar (não
+  chevron), uma coluna de participação percentual ao lado de cada métrica somável
+  (Mkt Share, Rent.%, Share na página Cias) e o **total fixo na última linha**, não
+  destacado no topo. O protótipo TanStack Table replicou expand/collapse e subtotal,
+  mas com chevron (`lucide-react`) em vez de `⊞`/`⊟`, sem a coluna de % lado a lado, e
+  sem fixar a linha de total — são ajustes a fazer no M4, não acrescentam risco à
+  escolha da biblioteca (TanStack Table suporta `pinning` de linha e qualquer ícone
+  via `flexRender`).
+- **Gráfico de barras**: a referência usa **barras horizontais** em gradiente
+  laranja→vermelho por ranking de valor (não uma cor fixa por série, como o protótipo
+  assumiu) — ver "Rotas", "Destinos", "Companhias" e "Cabines" na página Cias/X-ray.
+  É puro `fill` condicional por índice, suportado nativamente pelo Recharts
+  (`<Cell>` por barra, como já usado no `RechartsDonutChart`) — não exige mudar de
+  biblioteca, só ajustar o wrapper de barras para aceitar uma escala de cor por
+  ranking em vez de cor fixa por série.
+- **Gráfico de linha multi-série** (página X-ray, "Evolução mensal | Vendas por CIA"):
+  até ~15 séries simultâneas em cores distintas, sem rótulo de valor sobre o ponto.
+  Nenhum dos protótipos testou `LineChart` com esse volume de séries — ponto a
+  validar no M5 (xray é a página que usa esse gráfico), mas o Recharts tem suporte
+  nativo a `<Line>` por série, sem motivo para esperar problema de performance com
+  ~15 séries (long muito abaixo do que travaria até o ECharts).
+- **Rosca "Dom/Inter"**: a referência tem um ícone (avião) centralizado dentro do
+  donut. O protótipo não tinha ícone central — ajuste de CSS/posicionamento absoluto
+  sobre o `ResponsiveContainer`, trivial de adicionar depois.
+- **Paleta**: a referência usa majoritariamente vermelho/laranja/roxo (familia da
+  marca) com **verde/vermelho para indicadores de tendência** (▲/▼ ao lado dos nomes
+  de executivo na matriz de Vendas) — não capturado nos protótipos, mas já coberto
+  pelos tokens `--up`/`--down` informais do design system a definir no M4.
+
+Conclusão: nenhum achado desta comparação muda a decisão de biblioteca — todos os
+ajustes (ícone `⊞`, coluna de %, linha de total fixa, barra em gradiente por ranking,
+ícone central na rosca, indicador ▲/▼) são customização de wrapper, não recurso
+exclusivo de uma biblioteca descartada. Ficam registrados aqui para o M4 implementar
+com fidelidade real, em vez de reinventar o layout a partir do JSON.
 
 ## Decisão
 

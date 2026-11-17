@@ -7,6 +7,11 @@
 *.pbip
 *.abf
 
+# Capturas de referência do Power BI com dados reais de negócio — ficam só
+# localmente para comparação de fidelidade, nunca no histórico do Git.
+/PRINTS_BI_*/
+docs/adr/evidencias/power-bi-*/
+
 # Materiais de inspeção e saídas
 /outputs/
 /work/
