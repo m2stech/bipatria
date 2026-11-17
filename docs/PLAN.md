@@ -103,7 +103,7 @@ Baseado em [PRD.md](./PRD.md) e [CLAUDE.md](../CLAUDE.md). Ordem: **setup → in
 - [x] Portar regras de cálculo para funções puras testadas: nulos, divisão por zero, contagem distinta, janelas de data, faixas ADVP — `apps/web/src/lib/rules/`
 - [x] Registrar quais medidas DAX foram portadas e quais ficam pendentes; **não unificar fórmulas por nome** (`rentabilidade_003`/`tarifa_003` vs `Total`/`TotalRecebimento`) — `docs/paridade-dax.md`
 - [x] Estado global de filtros (URL como fonte de verdade): emissão, agência, executivo/promotor, rede, mentoria, companhia, filial, nacional/internacional, origem/destino, sistema, produto, fornecedor, cabine — `apps/web/src/lib/filters/` (useSearchParams/useRouter nativos do Next, sem nova dependência)
-- [ ] Filtro de calendário (componente visual) e "limpar filtros" — estado e botão (`ClearFiltersButton`, M1) já prontos; componente visual de calendário (shadcn `Calendar`/`Popover`) fica para o M4, junto das páginas que o usam
+- [x] Filtro de calendário (componente visual) e "limpar filtros" — `apps/web/src/components/visuals/date-range-filter.tsx` (shadcn `Calendar`/`Popover`, intervalo via `periodoInicio`/`periodoFim`); botão `ClearFiltersButton` (M1) já pronto
 - [x] Testes unitários das regras e dos filtros — 92 testes (Vitest)
 
 **Commit final:** `feat(data): contrato de dados, mocks determinísticos, regras portadas e filtros`
